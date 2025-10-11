@@ -22,11 +22,11 @@ jobs:
         run: |
           echo "start to build x86 64"
           mkdir -pv ${{ github.workspace }}/bin
-          docker run \
-            -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
-            -v ${{ github.workspace }}/build.sh:/opt/build.sh \
+          docker run -i \
             --rm \
             --privileged \
+            -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
+            -v ${{ github.workspace }}/build.sh:/opt/build.sh \
             immortalwrt/imagebuilder:x86-64-openwrt-${{ github.event.inputs.luci_version }}:latest \
             /bin/bash /opt/build.sh
 
