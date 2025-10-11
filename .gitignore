@@ -1,0 +1,9 @@
+node_modules/
+.idea/
+*.iml
+exampleSite/resources/
+public
+resources
+tool
+.hugo_build.lock
+themes/even/.git

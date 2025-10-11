@@ -1,0 +1,70 @@
+name: Generate Hugo site
+
+
+on:
+  workflow_dispatch:
+    # inputs:
+    #   luci_version:
+    #     description: 'specify a luci version to build'
+    #     required: false
+    #     default: '24.10.3'
+    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@main
+        with:
+          ref: main
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      - name: retrieve hugo theme even
+        run: |
+          echo "start to retrieve hugo theme even"
+          git clone https://github.com/olOwOlo/hugo-theme-even themes/even
+
+      - name: enhance layout to support mermaid
+        run: |
+          echo "start to enhance layout to support mermaid"
+          mkdir -pv themes/even/layouts/_markup && \
+             cp -v {{ github.workspace }}/layout_enhancement/render-codeblock-mermaid.html themes/even/layouts/_markup/render-codeblock-mermaid.html
+          cat {{ github.workspace }}/layout_enhancement/scripts.html >> themes/even/layouts/partials/scripts.html
+
+      - name: Build hugo site
+        run: |
+          echo "start to build hugo site"
+          hugo --minify
+
+      - name: Commit generated site to branch output
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'output'
+          commit-message: 'publish'
+          force-add: 'true'
+          files: ./public/**
+          name: GitHub Actions
+          email: jf@local.com
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  # release:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # create a release based on a file from runner workspace 
+  #     - name: Create Release
+  #       uses: softprops/action-gh-release@v2.4.0
+  #       with:
+  #         tag_name: IWRT-builder
+  #         files: |
+  #           ${{ github.workspace }}/bin/targets/x86/64/*squashfs-combined-efi.img.gz
+  #         body_path: ${{ github.workspace }}/release_notes.md
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
