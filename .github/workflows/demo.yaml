@@ -1,18 +1,53 @@
 name: GitHub Actions Demo
+
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+
+on:
+  workflow_dispatch:
+    inputs:
+      luci_version:
+        description: 'specify a luci version to build'
+        required: false
+        default: '24.10.3'
+    
+
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
+      - name: checkout repository
         uses: actions/checkout@v5
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      - name: run the builder 
+        run: |
+          echo "start to build x86 64"
+          docker run \
+            -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \ 
+            --rm \ 
+            --privileged \ 
+            immortalwrt/imagebuilder:x86-64-openwrt-${{ github.event.inputs.luci_version }}:latest \ 
+            /bin/bash -c "\
+              cd /home/build/immortalwrt && \
+              make info && \
+              make image PROFILE="generic" PACKAGES="luci-theme-argon luci-app-openclash luci-app-nps"
+            "
+
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+  release:
+    steps:
+      # create a release based on a file from runner workspace 
+      - name: Create Release
+        uses: softprops/action-gh-release@v2.4.0
+        with:
+          tag_name: IWRT-builder
+          release_name: Release v1.0.0
+          files: ${{ github.workspace }}/bin/x86-64/openwrt-*-generic-squashfs-combined.img.gz
+          body_path: ./release_notes.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
