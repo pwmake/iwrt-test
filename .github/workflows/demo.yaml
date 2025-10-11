@@ -24,13 +24,11 @@ jobs:
           mkdir -pv ${{ github.workspace }}/bin
           docker run \
             -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
+            -v ${{ github.workspace }}/build.sh:/opt/build.sh \
             --rm \
             --privileged \
             immortalwrt/imagebuilder:x86-64-openwrt-${{ github.event.inputs.luci_version }}:latest \
-            /bin/bash "\
-              cd /home/build/immortalwrt && \
-              make info && \
-              make image PROFILE="generic" PACKAGES="luci-theme-argon luci-app-openclash luci-app-nps"
+            /bin/bash /opt/build.sh
 
       - name: List files in the repository
         run: |
