@@ -18,6 +18,11 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v5
 
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+
       - name: run the builder 
         run: |
           echo "start to build x86 64"
@@ -25,12 +30,8 @@ jobs:
           docker run --rm -i \
             -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
             -v ${{ github.workspace }}/build.sh:/opt/build.sh \
-            immortalwrt/imagebuilder:x86-64-openwrt-${{ inputs.luci_version }}:latest \
-            /bin/bash /opt/build.sh
+            immortalwrt/imagebuilder:x86-64-openwrt-${{ inputs.luci_version }} /bin/bash /opt/build.sh
 
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
 
