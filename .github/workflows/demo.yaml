@@ -48,7 +48,7 @@ jobs:
           tag_name: IWRT-builder
           release_name: Release v1.0.0
           files: ${{ github.workspace }}/bin/x86-64/openwrt-*-generic-squashfs-combined.img.gz
-          body_path: ./release_notes.md
+          body_path: ${{ github.workspace }}/release_notes.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
