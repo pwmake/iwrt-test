@@ -39,6 +39,7 @@ jobs:
 
 
   release:
+    runs-on: ubuntu-latest
     steps:
       # create a release based on a file from runner workspace 
       - name: Create Release
