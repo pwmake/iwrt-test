@@ -1,6 +1,6 @@
-name: My first workflow
+name: Build IWRT x86-64
 
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
   workflow_dispatch:
@@ -27,11 +27,10 @@ jobs:
             --rm \
             --privileged \
             immortalwrt/imagebuilder:x86-64-openwrt-${{ github.event.inputs.luci_version }}:latest \
-            /bin/bash -c "\
+            /bin/bash "\
               cd /home/build/immortalwrt && \
               make info && \
               make image PROFILE="generic" PACKAGES="luci-theme-argon luci-app-openclash luci-app-nps"
-            "
 
       - name: List files in the repository
         run: |
