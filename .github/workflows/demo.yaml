@@ -21,6 +21,7 @@ jobs:
       - name: run the builder 
         run: |
           echo "start to build x86 64"
+          mkdir -pv ${{ github.workspace }}/bin
           docker run \
             -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
             --rm \
