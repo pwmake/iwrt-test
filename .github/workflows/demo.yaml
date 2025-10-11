@@ -24,7 +24,6 @@ jobs:
           mkdir -pv ${{ github.workspace }}/bin
           docker run -i \
             --rm \
-            --privileged \
             -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
             -v ${{ github.workspace }}/build.sh:/opt/build.sh \
             immortalwrt/imagebuilder:x86-64-openwrt-${{ github.event.inputs.luci_version }}:latest \
