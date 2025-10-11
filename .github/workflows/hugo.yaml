@@ -32,8 +32,8 @@ jobs:
         run: |
           echo "start to enhance layout to support mermaid"
           mkdir -pv themes/even/layouts/_markup && \
-             cp -v {{ github.workspace }}/layout_enhancement/render-codeblock-mermaid.html themes/even/layouts/_markup/render-codeblock-mermaid.html
-          cat {{ github.workspace }}/layout_enhancement/scripts.html >> themes/even/layouts/partials/scripts.html
+             cp -v ./layout_enhancement/render-codeblock-mermaid.html ./themes/even/layouts/_markup/render-codeblock-mermaid.html
+          cat ./layout_enhancement/scripts.html >> themes/even/layouts/partials/scripts.html
 
       - name: Build hugo site
         run: |
