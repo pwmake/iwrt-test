@@ -23,7 +23,7 @@ jobs:
       TZ: Asia/Taipei
     steps:
       - name: checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v5
         with:
           ref: main
 
@@ -106,16 +106,38 @@ jobs:
           echo "start to build hugo site"
           hugo --minify
 
-      - name: Commit generated site to branch output
-        uses: github-actions-x/commit@v2.9
+      - name: checkout output branch
+        uses: actions/checkout@v5
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'output'
-          commit-message: 'publish'
-          force-add: 'true'
-          files: ./public/
-          name: GitHub Actions
-          email: jf@local.com
+          ref: output
+          path: output
+
+      - name: Copy generated site to output branch
+        run: |  
+          echo "start to copy generated site to output branch"
+          /bin/cp -a public/* output/
+
+      - name: Commit generated site to branch output
+        run: |
+          echo "start to commit generated site to branch output"
+          cd output
+          git config user.name "GitHub Actions"
+          git config user.email "jf@test.com"
+          git add * 
+          git commit -m "publish"
+          git push origin output
+
+
+      # - name: Commit generated site to branch output
+      #   uses: github-actions-x/commit@v2.9
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     push-branch: 'output'
+      #     commit-message: 'publish'
+      #     force-add: 'true'
+      #     files: ./public/
+      #     name: GitHub Actions
+      #     email: jf@local.com
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
