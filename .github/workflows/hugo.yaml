@@ -13,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       DART_SASS_VERSION: 1.93.2
       GO_VERSION: 1.25.1
@@ -111,7 +113,7 @@ jobs:
           push-branch: 'output'
           commit-message: 'publish'
           force-add: 'true'
-          files: ./public/**
+          files: ./public/
           name: GitHub Actions
           email: jf@local.com
 
