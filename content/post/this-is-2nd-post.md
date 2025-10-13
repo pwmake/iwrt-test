@@ -1,7 +1,7 @@
 ---
 title: "This Is My Second Test"
 date: '2025-10-13'
-draft: true
+draft: false
 author: Jeff
 ---
 
