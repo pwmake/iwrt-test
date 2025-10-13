@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZM - Jeff's blog</title><link>http://0.0.0.0:8080/</link><description>Recent content on ZM - Jeff's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 28 Aug 2017 21:41:52 +0800</lastBuildDate><atom:link href="http://0.0.0.0:8080/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>http://0.0.0.0:8080/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>http://0.0.0.0:8080/about/</guid><description>&lt;p&gt;Hugo is a static site engine written in Go.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZM - Jeff's blog</title><link>http://0.0.0.0:8080/</link><description>Recent content on ZM - Jeff's blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 13 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://0.0.0.0:8080/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>http://0.0.0.0:8080/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>http://0.0.0.0:8080/about/</guid><description>&lt;p&gt;Hugo is a static site engine written in Go.&lt;/p&gt;
 &lt;p&gt;It makes use of a variety of open source projects including:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/spf13/cobra"&gt;Cobra&lt;/a&gt;&lt;/li&gt;
@@ -6,4 +6,60 @@
 &lt;li&gt;&lt;a href="https://github.com/spf13/jWalterWeatherman"&gt;J Walter Weatherman&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/spf13/cast"&gt;Cast&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Learn more and contribute on &lt;a href="https://github.com/gohugoio"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Learn more and contribute on &lt;a href="https://github.com/gohugoio"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>This Is My Second Test</title><link>http://0.0.0.0:8080/post/this-is-2nd-post/</link><pubDate>Mon, 13 Oct 2025 00:00:00 +0000</pubDate><guid>http://0.0.0.0:8080/post/this-is-2nd-post/</guid><description>&lt;h2 id="quick-start"&gt;quick start&lt;/h2&gt;
+&lt;p&gt;Run following command to install current hugo theme, &lt;a href="https://github.com/olOwOlo/hugo-theme-even"&gt;even&lt;/a&gt;, which has not been maintained for a long time.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ git clone https://github.com/olOwOlo/hugo-theme-even themes/even
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;NOTE: For this theme, you should use post instead of posts, namely &lt;code&gt;hugo new post/some-content.md&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;hugo version: v0.111.3+extended&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;remember to add following identifier refer to yandex email.&lt;/p&gt;
+
+&lt;pre class="mermaid" align="center"&gt;
+ ---
+config:
+ look: handDrawn
+ theme: forest
+---
+flowchart LR
+ A[Christmas] --&amp;gt;|Get money| B(Go shopping)
+ B --&amp;gt; C{Let me think}
+ C --&amp;gt;|One| D[Laptop]
+ C --&amp;gt;|Two| E[iPhone]
+ C --&amp;gt;|Three| F[fa:fa-car Car]
+ 
+&lt;/pre&gt;</description></item><item><title>This Is My First Test</title><link>http://0.0.0.0:8080/post/this-is-1st-post/</link><pubDate>Tue, 30 Sep 2025 00:00:00 +0000</pubDate><guid>http://0.0.0.0:8080/post/this-is-1st-post/</guid><description>&lt;h2 id="quick-start"&gt;quick start&lt;/h2&gt;
+&lt;p&gt;Run following command to install current hugo theme, &lt;a href="https://github.com/olOwOlo/hugo-theme-even"&gt;even&lt;/a&gt;, which has not been maintained for a long time.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ git clone https://github.com/olOwOlo/hugo-theme-even themes/even
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;NOTE: For this theme, you should use post instead of posts, namely &lt;code&gt;hugo new post/some-content.md&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;hugo version: v0.111.3+extended&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;remember to add following identifier refer to yandex email.&lt;/p&gt;
+
+&lt;pre class="mermaid" align="center"&gt;
+ ---
+config:
+ look: handDrawn
+ theme: forest
+---
+flowchart LR
+ A[Christmas] --&amp;gt;|Get money| B(Go shopping)
+ B --&amp;gt; C{Let me think}
+ C --&amp;gt;|One| D[Laptop]
+ C --&amp;gt;|Two| E[iPhone]
+ C --&amp;gt;|Three| F[fa:fa-car Car]
+ 
+&lt;/pre&gt;</description></item></channel></rss>
