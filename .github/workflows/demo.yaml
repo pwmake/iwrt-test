@@ -18,10 +18,6 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v5
 
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
       - name: Build targets x86-64 inside docker container
         run: |
           echo "start to build x86 64"
@@ -30,18 +26,24 @@ jobs:
             -v ${{ github.workspace }}/build.sh:/opt/build.sh \
             immortalwrt/imagebuilder:x86-64-openwrt-${{ inputs.luci_version }} /bin/bash /opt/build.sh
 
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
 
   release:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       # create a release based on a file from runner workspace 
       - name: Create Release
         uses: softprops/action-gh-release@v2.4.0
         with:
-          tag_name: IWRT-builder
+          # tag_name: IWRT-builder
           files: |
             ${{ github.workspace }}/bin/targets/x86/64/*squashfs-combined-efi.img.gz
           body_path: ${{ github.workspace }}/release_notes.md
