@@ -23,8 +23,8 @@ jobs:
           echo "start to build x86 64"
           docker run --rm -i -u root \
             -v ${{ github.workspace }}/bin:/home/build/immortalwrt/bin \
-            -v ${{ github.workspace }}/build.sh:/opt/build.sh \
-            immortalwrt/imagebuilder:x86-64-openwrt-${{ inputs.luci_version }} /bin/bash /opt/build.sh
+            -v ${{ github.workspace }}/build_iwrt.sh:/opt/build_iwrt.sh \
+            immortalwrt/imagebuilder:x86-64-openwrt-${{ inputs.luci_version }} /bin/bash /opt/build_iwrt.sh
 
       - name: List files in the repository
         run: |
