@@ -13,6 +13,7 @@ main() {
   GO_VERSION=1.25.3
   HUGO_VERSION=0.152.2
   NODE_VERSION=22.20.0
+  YANDEX_META_DATA='<meta name="yandex-verification" content="d2b7b73728e5409e">'
 
   export TZ=Europe/Oslo
 
@@ -59,13 +60,19 @@ main() {
     git fetch --unshallow
   fi
 
-  echo "start to retrieve hugo theme even" 
+  # Check out theme
+  echo "Retrieving hugo theme even" 
   git clone https://github.com/olOwOlo/hugo-theme-even themes/even
 
-  echo "start to enhance layout to support mermaid"
+  # Enhance mermaid
+  echo "Enhancing layout to support mermaid"
     mkdir -pv themes/even/layouts/_markup && \
         cp -v ./layout_enhancement/render-codeblock-mermaid.html ./themes/even/layouts/_markup/render-codeblock-mermaid.html
     cat ./layout_enhancement/scripts.html >> themes/even/layouts/partials/scripts.html
+
+  # Add yandex email verification
+  echo "Adding Yandex verification meta tag..."
+  sed -i "/theme-color/a $YANDEX_META_DATA" themes/even/layouts/partials/head.html
 
   # Build the site
   echo "Building the site..."
